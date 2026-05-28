@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 
-const API_URL = 'http://localhost:3000'
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 // Locked to a single solo creator. Swap this constant to relaunch the studio for someone else.
 const CREATOR = {
