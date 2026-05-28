@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node src/index.js)",
+      "PowerShell(npm --prefix frontend install react-router-dom)"
+    ]
+  }
+}

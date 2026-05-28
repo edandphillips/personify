@@ -1,0 +1,4 @@
+ALTER TABLE invoices DROP COLUMN IF EXISTS agency_fee_cents;
+ALTER TABLE invoices DROP COLUMN IF EXISTS agency_id;
+ALTER TABLE creators DROP COLUMN IF EXISTS agency_id;
+DROP TABLE IF EXISTS agencies;

@@ -1,0 +1,2 @@
+ALTER TABLE invoices
+    ADD COLUMN IF NOT EXISTS brand_name VARCHAR(255);
