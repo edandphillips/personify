@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "PowerShell(node src/index.js)",
-      "PowerShell(npm --prefix frontend install react-router-dom)"
+      "PowerShell(npm --prefix frontend install react-router-dom)",
+      "PowerShell(node --check src/index.js)",
+      "PowerShell(if \\($?\\) { \"OK: syntax\" })"
     ]
   }
 }

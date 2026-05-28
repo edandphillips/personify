@@ -8,11 +8,17 @@ const productsRouter = require('./routes/products');
 
 const app = express();
 
-const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5173')
-  .split(',')
-  .map((o) => o.trim());
-
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({
+  origin: (origin, cb) => {
+    // No Origin header: server-to-server, curl, healthchecks — allow.
+    if (!origin) return cb(null, true);
+    // Local dev.
+    if (origin === 'http://localhost:5173') return cb(null, true);
+    // Any Vercel deployment for this project: production alias OR per-deployment preview.
+    if (/^https:\/\/personify(-[\w-]+)?\.vercel\.app$/.test(origin)) return cb(null, true);
+    return cb(new Error('Not allowed by CORS'));
+  },
+}));
 app.use('/api/webhooks/north', express.raw({ type: 'application/json' }));
 app.use(express.json());
 
